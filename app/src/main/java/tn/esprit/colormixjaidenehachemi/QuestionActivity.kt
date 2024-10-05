@@ -91,12 +91,11 @@ class QuestionActivity : AppCompatActivity() {
         // NAME=name is unnecessary because 'name' is a local variable and you are already assigning it earlier
 
         //TODO 11 Create an Intent to AnswerActivity and pass all of the values (name, colorMixed, color1, color2), then start the activity
-        val intent = Intent(this, AnswerActivity::class.java).apply {
-            intent.putExtra("Mixed_Color", colorMixed)
-            intent.putExtra("Color1", color1)
-            intent.putExtra("Color2", color2)
-            intent.putExtra("Full_Name", name)
-        }
+        val intent = Intent(this, AnswerActivity::class.java)
+        intent.putExtra("Mixed_Color", colorMixed)
+        intent.putExtra("Color1", color1)
+        intent.putExtra("Color2", color2)
+        intent.putExtra("Full_Name", name)
         startActivity(intent)
 
         // Provide feedback on the activity transition
