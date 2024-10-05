@@ -7,6 +7,7 @@ class AnswerActivity : AppCompatActivity() {
 
     //TODO 12 Add lateint var for binding
 
+
     private var correctColor = "NONE"
     private var name = "NONE"
     private var color1 = "NONE"
