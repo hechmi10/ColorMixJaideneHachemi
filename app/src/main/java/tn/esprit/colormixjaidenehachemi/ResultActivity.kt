@@ -31,20 +31,21 @@ class ResultActivity : AppCompatActivity() {
 
 
         //TODO 20 Check the RESULT from the intent and change rlBackground BackgroundColor / btnQuit BackgroundColor / imgResult / txtResult / txtName / txtAnswer
-        val result=intent.getStringExtra("Result").toString()
-        val name=intent.getStringExtra("Full_Name").toString()
-        txtName.text="$name"
+        val result=intent.getStringExtra(RESULT).toString()
+        val name=intent.getStringExtra(NAME).toString()
         if(result== SUCCESS){
             rlBackground.setBackgroundColor(resources.getColor(R.color.success))
             quit.setBackgroundColor(resources.getColor(R.color.success))
             imgResult.setImageResource(R.drawable.ic_success)
-            txtResult.text="Congratulations"
+            txtResult.text="Success"
+            txtName.text="Congratulations $name"
             txtAnswer.text="Your answer is correct"
         }else{
             rlBackground.setBackgroundColor(resources.getColor(R.color.error))
             quit.setBackgroundColor(resources.getColor(R.color.error))
             imgResult.setImageResource(R.drawable.ic_failure)
-            txtName.text="Better luck next time"
+            txtResult.text="Failure"
+            txtName.text="Better luck next time $name"
             txtAnswer.text="Your answer is wrong"
 
         }
