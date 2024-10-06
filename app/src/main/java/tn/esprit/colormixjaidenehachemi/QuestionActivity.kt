@@ -20,11 +20,11 @@ const val ORANGE = "Orange"
 
 //TODO 3 Add string constant val here for NAME / MIXED_COLOR / COLOR1 / COLOR2 / RESULT / SUCCESS / FAILED
 
-private const val NAME = "Name"
-private const val MIXED_COLOR = "Mixed_Color"
-private const val COLOR1 = "Color1"
-private const val COLOR2 = "Color2"
-private const val RESULT = "Result"
+var NAME = "Name"
+const val MIXED_COLOR = "Mixed_Color"
+const val COLOR1 = "Color1"
+const val COLOR2 = "Color2"
+const val RESULT = "Result"
 const val SUCCESS = "Success"
 const val FAILED = "Failed"
 
@@ -82,23 +82,20 @@ class QuestionActivity : AppCompatActivity() {
                 color1 == BLUE && color2 == YELLOW -> GREEN
                 else -> ORANGE
             }
+
         } else {
             Snackbar.make(FullName, "Please select exactly two colors", Snackbar.LENGTH_SHORT).show()
             return
         }
 
         //TODO 10 Change the value of name with the input
-        // NAME=name is unnecessary because 'name' is a local variable and you are already assigning it earlier
 
         //TODO 11 Create an Intent to AnswerActivity and pass all of the values (name, colorMixed, color1, color2), then start the activity
         val intent = Intent(this, AnswerActivity::class.java)
-        intent.putExtra("Mixed_Color", colorMixed)
-        intent.putExtra("Color1", color1)
-        intent.putExtra("Color2", color2)
-        intent.putExtra("Full_Name", name)
+        intent.putExtra(NAME, name)
+        intent.putExtra(MIXED_COLOR, colorMixed)
+        intent.putExtra(COLOR1, color1)
+        intent.putExtra(COLOR2, color2)
         startActivity(intent)
-
-        // Provide feedback on the activity transition
-        Toast.makeText(this, "Navigating to AnswerActivity", Toast.LENGTH_SHORT).show()
     }
 }
