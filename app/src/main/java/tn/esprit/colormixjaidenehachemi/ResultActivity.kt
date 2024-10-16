@@ -6,51 +6,42 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import tn.esprit.colormixjaidenehachemi.databinding.ActivityResultBinding
 
 class ResultActivity : AppCompatActivity() {
 
     //TODO 18 Add lateint var for binding
-    private lateinit var rlBackground: RelativeLayout
-    private lateinit var imgResult: ImageView
-    private lateinit var txtResult:TextView
-    private lateinit var txtName:TextView
-    private lateinit var txtAnswer:TextView
-    private lateinit var quit: Button
+    private lateinit var binding: ActivityResultBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //TODO 19 Bind the view and implement setContentView()
-        setContentView(R.layout.activity_result)
-        rlBackground=findViewById(R.id.rlBackground)
-        imgResult=findViewById(R.id.imgResult)
-        txtResult=findViewById(R.id.txtResult)
-        txtName=findViewById(R.id.txtName)
-        txtAnswer=findViewById(R.id.txtAnswer)
-        quit=findViewById(R.id.btnQuit)
+        binding= ActivityResultBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
         //TODO 20 Check the RESULT from the intent and change rlBackground BackgroundColor / btnQuit BackgroundColor / imgResult / txtResult / txtName / txtAnswer
         val result=intent.getStringExtra(RESULT).toString()
         val name=intent.getStringExtra(NAME).toString()
         if(result== SUCCESS){
-            rlBackground.setBackgroundColor(resources.getColor(R.color.success))
-            quit.setBackgroundColor(resources.getColor(R.color.success))
-            imgResult.setImageResource(R.drawable.ic_success)
-            txtResult.text="Success"
-            txtName.text="Congratulations $name"
-            txtAnswer.text="Your answer is correct"
+            binding.rlBackground.setBackgroundColor(resources.getColor(R.color.success))
+            binding.btnQuit.setBackgroundColor(resources.getColor(R.color.success))
+            binding.imgResult.setImageResource(R.drawable.ic_success)
+            binding.txtResult.text="Success"
+            binding.txtName.text="Congratulations $name"
+            binding.txtAnswer.text="Your answer is correct"
         }else{
-            rlBackground.setBackgroundColor(resources.getColor(R.color.error))
-            quit.setBackgroundColor(resources.getColor(R.color.error))
-            imgResult.setImageResource(R.drawable.ic_failure)
-            txtResult.text="Failure"
-            txtName.text="Better luck next time $name"
-            txtAnswer.text="Your answer is wrong"
+            binding.rlBackground.setBackgroundColor(resources.getColor(R.color.error))
+            binding.btnQuit.setBackgroundColor(resources.getColor(R.color.error))
+            binding.imgResult.setImageResource(R.drawable.ic_failure)
+            binding.txtResult.text="Failure"
+            binding.txtName.text="Better luck next time $name"
+            binding.txtAnswer.text="Your answer is wrong"
 
         }
         //TODO 21 Implement setOnClickListener for btnQuit to destroy the activity
-        quit.setOnClickListener {
+        binding.btnQuit.setOnClickListener {
             finish()
         }
     }

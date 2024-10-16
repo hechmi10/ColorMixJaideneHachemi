@@ -35,8 +35,8 @@ android {
     }
 
     //TODO 1 : Add viewBinding here
-    buildFeatures{
-        viewBinding=true
+    viewBinding{
+        enable=true
     }
     buildToolsVersion = "35.0.0"
 
