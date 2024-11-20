@@ -11,17 +11,20 @@ import tn.esprit.colormixjaidenehachemi.databinding.ActivityResultBinding
 class ResultActivity : AppCompatActivity() {
 
     //TODO 18 Add lateint var for binding
+    //Déclarer le binding entre l'activité et les données
     private lateinit var binding: ActivityResultBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //TODO 19 Bind the view and implement setContentView()
+        //Lier l'activité aux données
         binding= ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
         //TODO 20 Check the RESULT from the intent and change rlBackground BackgroundColor / btnQuit BackgroundColor / imgResult / txtResult / txtName / txtAnswer
+        //Afficher le résultat du réponse correcte ou incorrecte
         val result=intent.getStringExtra(RESULT).toString()
         val name=intent.getStringExtra(NAME).toString()
         if(result== SUCCESS){
@@ -41,6 +44,7 @@ class ResultActivity : AppCompatActivity() {
 
         }
         //TODO 21 Implement setOnClickListener for btnQuit to destroy the activity
+        //Retourner dans l'activité précedente
         binding.btnQuit.setOnClickListener {
             finish()
         }

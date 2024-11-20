@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "tn.esprit.colormixjaidenehachemi"
-    compileSdk = 33
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "tn.esprit.colormixjaidenehachemi"
         minSdk = 26
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -44,12 +44,12 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(libs.androidx.core.ktx.v190)
+    implementation(libs.androidx.appcompat.v161)
+    implementation(libs.material.v190)
+    implementation(libs.androidx.constraintlayout.v220)
     implementation(libs.androidx.viewbinding)
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit.v115)
+    androidTestImplementation(libs.androidx.espresso.core.v351)
 }

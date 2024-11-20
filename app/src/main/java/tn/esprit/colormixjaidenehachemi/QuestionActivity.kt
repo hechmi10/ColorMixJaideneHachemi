@@ -3,11 +3,7 @@ package tn.esprit.colormixjaidenehachemi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
 import tn.esprit.colormixjaidenehachemi.databinding.ActivityQuestionBinding
 
 //TODO 2 Add string constant val here for RED / BLUE / YELLOW / PURPLE / GREEN / ORANGE
@@ -34,9 +30,11 @@ const val FAILED = "Failed"
 class QuestionActivity : AppCompatActivity() {
 
     //TODO 4 Add lateint var for binding
+    //Déclarer le binding entre l'activité
     private lateinit var binding: ActivityQuestionBinding
 
     //TODO 5 Add var for colorMixed / color1 / color2 / name
+    //Initialiser des variables pour l'intent
     private var colorMixed:String = ""
     private var color1:String = ""
     private var color2:String = ""
@@ -51,7 +49,7 @@ class QuestionActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //TODO 7 Implement setOnClickListener on the button Mix and call mixColor()
-        //Ajuster l'évenement du clic pour qu'il active la méthode mixColor()
+        //Ajuster l'évenement du clic pour qu'il active la méthode du mélange des couleurs
         binding.btnMix.setOnClickListener {
             mixColor()
         }
@@ -76,10 +74,9 @@ class QuestionActivity : AppCompatActivity() {
             color1 = selectedColors[0]
             color2 = selectedColors[1]
             colorMixed = when {
-                color1 == RED && color2 == BLUE -> PURPLE
-                color1 == BLUE && color2 == YELLOW -> GREEN
-                color1==RED && color2 == YELLOW -> ORANGE
-                else -> ""
+                (color1 == RED && color2 == BLUE) || (color1 == BLUE && color2== RED) -> PURPLE
+                (color1 == BLUE && color2 == YELLOW) || (color1==YELLOW && color2==BLUE) -> GREEN
+                else -> ORANGE
             }
 
         } else {
@@ -91,6 +88,7 @@ class QuestionActivity : AppCompatActivity() {
         //voir TODO 8
 
         //TODO 11 Create an Intent to AnswerActivity and pass all of the values (name, colorMixed, color1, color2), then start the activity
+        //Naviguer vers l'activité de choisir la réponse correcte
         val intent = Intent(this, AnswerActivity::class.java).apply{
             intent.putExtra(NAME, name)
             intent.putExtra(MIXED_COLOR, colorMixed)
